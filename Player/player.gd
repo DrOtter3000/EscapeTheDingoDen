@@ -9,8 +9,14 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
 
+@export var max_hitpoints : int = 100
+
 var mouse_motion := Vector2.ZERO
 var fall_multiplier := 2.0
+var hitpoints := max_hitpoints:
+	set(value):
+		hitpoints = value
+		print(hitpoints)
 
 
 func _ready() -> void:
