@@ -14,3 +14,10 @@ shape = SubResource("CapsuleShape3D_voo7q")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541116, 0)
+
+[node name="Flashlight" type="SpotLight3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(0.99777, 9.29246e-10, -0.0667441, 0.00580785, 0.996207, 0.0868226, 0.0664909, -0.0870166, 0.993985, -0.265679, -0.586242, -0.673809)
+light_color = Color(0.858824, 0.878431, 0.784314, 1)
+shadow_enabled = true
+spot_range = 10.5
+spot_angle = 30.0

@@ -7,19 +7,33 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
 
 var mouse_motion := Vector2.ZERO
+var fall_multiplier := 2.0
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	flashlight.light_energy = 0
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("flashlight"):
+		if flashlight.light_energy > 0:
+			flashlight.light_energy = 0
+		else:
+			flashlight.light_energy = 1.0
 
 
 func _physics_process(delta: float) -> void:
 	turn_player()
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		if velocity.y >= 0:
+			velocity.y -= gravity * delta
+		else:
+			velocity.y -= gravity * delta * fall_multiplier
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
