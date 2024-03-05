@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxnhpjpe4wjct"]
+
+[ext_resource type="PackedScene" uid="uid://cley0ul24idnj" path="res://Player/player.tscn" id="1_yw43a"]
+
+[node name="BasicLevel" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_yw43a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SpawnRoom" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(6, 4, 6)
