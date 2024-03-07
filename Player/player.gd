@@ -10,11 +10,14 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
 @onready var target_ray_cast: RayCast3D = $CameraPivot/Camera3D/TargetRayCast
 @onready var target = target_ray_cast.get_collider()
+@onready var animation_player: AnimationPlayer = $CameraPivot/Camera3D/AnimationPlayer
+@onready var cooldown_timer: Timer = $CooldownTimer
 
 @export var sparks: PackedScene
 @export var max_hitpoints : int = 100
 @export var damage := 10
 
+var weapon_ready := true
 var mouse_motion := Vector2.ZERO
 var fall_multiplier := 2.0
 var hitpoints := max_hitpoints:
@@ -79,14 +82,21 @@ func turn_player() -> void:
 
 
 func shoot(body) -> void:
-	spawn_sparks()
-	if body.is_in_group("Enemies"):
-		body.take_damage(damage)
+	if weapon_ready:
+		weapon_ready = false
+		cooldown_timer.start()
+		animation_player.play("shoot")
+		spawn_sparks()
+		if body.is_in_group("Enemies"):
+			body.take_damage(damage)
 
 
 func spawn_sparks() -> void:
 	var new_sparks = sparks.instantiate()
 	add_child(new_sparks)
 	new_sparks.global_position = target_ray_cast.get_collision_point()
-	print(new_sparks.global_position)
 	new_sparks.emitting = true
+
+
+func _on_cooldown_timer_timeout() -> void:
+	weapon_ready = true
