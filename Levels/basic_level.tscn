@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxnhpjpe4wjct"]
+[gd_scene load_steps=7 format=3 uid="uid://cxnhpjpe4wjct"]
 
 [ext_resource type="PackedScene" uid="uid://cley0ul24idnj" path="res://Player/player.tscn" id="1_yw43a"]
 [ext_resource type="Texture2D" uid="uid://dkeq5o8vsb6di" path="res://Levels/texture_02.png" id="2_an4bc"]
 [ext_resource type="PackedScene" uid="uid://dl36sjhgi44rq" path="res://Enemies/melee_basic.tscn" id="2_coc0r"]
+[ext_resource type="PackedScene" uid="uid://bu2x06akv8lbv" path="res://Assets/WhiskeyDingOs.glb" id="4_sfrvh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wrxau"]
 vertices = PackedVector3Array(-9.25, 0, -9.25, -9.25, 0, 9.25, 9.5, 0, 9.25, 9.5, 0, -9.25)
@@ -35,3 +36,6 @@ use_collision = true
 flip_faces = true
 size = Vector3(20, 4, 20)
 material = SubResource("StandardMaterial3D_q7vxy")
+
+[node name="WhiskeyDingOs" parent="NavigationRegion3D/SpawnRoom" instance=ExtResource("4_sfrvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832983, 6.3621)
