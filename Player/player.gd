@@ -12,6 +12,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var target = target_ray_cast.get_collider()
 @onready var animation_player: AnimationPlayer = $CameraPivot/Camera3D/AnimationPlayer
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var ammo_label: Label = $HUD/AmmoLabel
 
 @export var sparks: PackedScene
 @export var max_hitpoints : int = 100
@@ -29,6 +30,8 @@ var hitpoints := max_hitpoints:
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	flashlight.light_energy = 0
+	update_ammo_label()
+	
 
 
 func _process(delta: float) -> void:
@@ -82,7 +85,9 @@ func turn_player() -> void:
 
 
 func shoot(body) -> void:
-	if weapon_ready:
+	if weapon_ready and Gamestate.ammo["pistol_rounds"] > 0:
+		Gamestate.ammo["pistol_rounds"] -= 1
+		update_ammo_label()
 		weapon_ready = false
 		cooldown_timer.start()
 		animation_player.play("shoot")
@@ -100,3 +105,7 @@ func spawn_sparks() -> void:
 
 func _on_cooldown_timer_timeout() -> void:
 	weapon_ready = true
+
+
+func update_ammo_label() -> void:
+	ammo_label.text = str(Gamestate.ammo["pistol_rounds"])
