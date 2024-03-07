@@ -9,7 +9,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
 @onready var target_ray_cast: RayCast3D = $CameraPivot/Camera3D/TargetRayCast
+@onready var target = target_ray_cast.get_collider()
 
+@export var sparks: PackedScene
 @export var max_hitpoints : int = 100
 @export var damage := 10
 
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 			flashlight.light_energy = 1.0
 	
 	if Input.is_action_just_pressed("fire"):
-		var target = target_ray_cast.get_collider()
+		target = target_ray_cast.get_collider()
 		shoot(target)
 
 func _physics_process(delta: float) -> void:
@@ -77,5 +79,14 @@ func turn_player() -> void:
 
 
 func shoot(body) -> void:
+	spawn_sparks()
 	if body.is_in_group("Enemies"):
 		body.take_damage(damage)
+
+
+func spawn_sparks() -> void:
+	var new_sparks = sparks.instantiate()
+	add_child(new_sparks)
+	new_sparks.global_position = target_ray_cast.get_collision_point()
+	print(new_sparks.global_position)
+	new_sparks.emitting = true
