@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cley0ul24idnj"]
+[gd_scene load_steps=4 format=3 uid="uid://cley0ul24idnj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_nqqyq"]
+[ext_resource type="Script" path="res://Player/Crosshair.gd" id="2_lblxf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_voo7q"]
 
@@ -21,3 +22,17 @@ light_color = Color(0.858824, 0.878431, 0.784314, 1)
 shadow_enabled = true
 spot_range = 10.5
 spot_angle = 30.0
+
+[node name="TargetRayCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -100)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("2_lblxf")

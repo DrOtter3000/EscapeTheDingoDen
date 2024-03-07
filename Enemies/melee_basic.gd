@@ -14,6 +14,15 @@ var player
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var max_hitpoints := 100
+
+var hitpoints := max_hitpoints:
+	set(value):
+		hitpoints = value
+		print(hitpoints)
+		if hitpoints <= 0:
+			queue_free()
+
 var provoked := false
 
 func _ready() -> void:
@@ -62,5 +71,10 @@ func look_at_target(direction: Vector3):
 	look_at(global_position + adjusted_direction, Vector3.UP, true)
 
 
-func hurt_player():
+func hurt_player() -> void:
 	player.hitpoints -= damage
+
+
+func take_damage(value) -> void:
+	hitpoints -= value
+	provoked = true

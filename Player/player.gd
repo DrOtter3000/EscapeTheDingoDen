@@ -8,8 +8,10 @@ const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
+@onready var target_ray_cast: RayCast3D = $CameraPivot/Camera3D/TargetRayCast
 
 @export var max_hitpoints : int = 100
+@export var damage := 10
 
 var mouse_motion := Vector2.ZERO
 var fall_multiplier := 2.0
@@ -30,7 +32,10 @@ func _process(delta: float) -> void:
 			flashlight.light_energy = 0
 		else:
 			flashlight.light_energy = 1.0
-
+	
+	if Input.is_action_just_pressed("fire"):
+		var target = target_ray_cast.get_collider()
+		shoot(target)
 
 func _physics_process(delta: float) -> void:
 	turn_player()
@@ -69,3 +74,8 @@ func turn_player() -> void:
 	$CameraPivot.rotate_x(mouse_motion.y)
 	$CameraPivot.rotation_degrees.x = clampf($CameraPivot.rotation_degrees.x, -90, 90)
 	mouse_motion = Vector2.ZERO
+
+
+func shoot(body) -> void:
+	if body.is_in_group("Enemies"):
+		body.take_damage(damage)

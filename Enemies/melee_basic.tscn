@@ -63,7 +63,7 @@ _data = {
 "attack": SubResource("Animation_s7ria")
 }
 
-[node name="MeleeBasic" type="CharacterBody3D"]
+[node name="MeleeBasic" type="CharacterBody3D" groups=["Enemies"]]
 script = ExtResource("1_jtbc0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
