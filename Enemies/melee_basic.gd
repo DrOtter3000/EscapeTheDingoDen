@@ -42,7 +42,8 @@ func _physics_process(delta: float) -> void:
 		provoked = true
 	
 	if distance < attack_range:
-		animation_player.play("attack")
+		#animation_player.play("attack")
+		pass
 	
 	# Add the gravity.
 	if not is_on_floor():
