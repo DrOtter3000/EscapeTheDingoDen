@@ -1,41 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxnhpjpe4wjct"]
+[gd_scene load_steps=4 format=3 uid="uid://cxnhpjpe4wjct"]
 
 [ext_resource type="PackedScene" uid="uid://cley0ul24idnj" path="res://Player/player.tscn" id="1_yw43a"]
-[ext_resource type="Texture2D" uid="uid://dkeq5o8vsb6di" path="res://Levels/texture_02.png" id="2_an4bc"]
-[ext_resource type="PackedScene" uid="uid://dl36sjhgi44rq" path="res://Enemies/melee_basic.tscn" id="2_coc0r"]
-[ext_resource type="PackedScene" uid="uid://bu2x06akv8lbv" path="res://Assets/WhiskeyDingOs.glb" id="4_sfrvh"]
+[ext_resource type="Material" uid="uid://jq78xr45dva2" path="res://Materials/DungeonBG.tres" id="2_r8t3a"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wrxau"]
 vertices = PackedVector3Array(-9.25, 0, -9.25, -9.25, 0, 9.25, 9.5, 0, 9.25, 9.5, 0, -9.25)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7vxy"]
-albedo_texture = ExtResource("2_an4bc")
-uv1_triplanar = true
-uv1_world_triplanar = true
-
 [node name="BasicLevel" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("1_yw43a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="MeleeBasic" parent="Enemies" instance=ExtResource("2_coc0r")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.20003, -7)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_wrxau")
 
 [node name="SpawnRoom" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 use_collision = true
 flip_faces = true
-size = Vector3(20, 4, 20)
-material = SubResource("StandardMaterial3D_q7vxy")
+size = Vector3(20, 3.5, 20)
+material = ExtResource("2_r8t3a")
 
-[node name="WhiskeyDingOs" parent="NavigationRegion3D/SpawnRoom" instance=ExtResource("4_sfrvh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832983, 6.3621)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/SpawnRoom"]
+
+[node name="Hall1" type="CSGBox3D" parent="NavigationRegion3D/SpawnRoom/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -25.5)
+use_collision = true
+flip_faces = true
+size = Vector3(20, 7.5, 19)
+material = ExtResource("2_r8t3a")
+
+[node name="Hall2" type="CSGBox3D" parent="NavigationRegion3D/SpawnRoom/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2, -13)
+use_collision = true
+flip_faces = true
+size = Vector3(20, 7.5, 46)
+material = ExtResource("2_r8t3a")
+
+[node name="Corridor" type="CSGBox3D" parent="NavigationRegion3D/SpawnRoom/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -12.5)
+cast_shadow = 0
+flip_faces = true
+size = Vector3(2.5, 3, 10)
+
+[node name="Corridor2" type="CSGBox3D" parent="NavigationRegion3D/SpawnRoom/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.5, -0.3, -30.5)
+cast_shadow = 0
+flip_faces = true
+size = Vector3(2.5, 3, 5)
+
+[node name="Corridor3" type="CSGBox3D" parent="NavigationRegion3D/SpawnRoom/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.5, 3.7, -30.5)
+cast_shadow = 0
+flip_faces = true
+size = Vector3(2.5, 3, 5)
