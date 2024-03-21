@@ -12,7 +12,7 @@ var player
 @export var attack_range := 2.0
 @export var damage := 5
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 @export var max_hitpoints := 100
 
@@ -49,10 +49,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	var direction := global_position.direction_to(next_position)
 	
 	if direction:
