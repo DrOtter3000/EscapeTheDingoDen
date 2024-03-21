@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var steps_sfx: AudioStreamPlayer = $StepsSFX
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
 @onready var target_ray_cast: RayCast3D = $CameraPivot/Camera3D/TargetRayCast
 @onready var target = target_ray_cast.get_collider()
@@ -30,6 +31,7 @@ var hitpoints := max_hitpoints:
 
 
 func _ready() -> void:
+	randomize()
 	health_bar.max_value = max_hitpoints
 	health_bar.value = hitpoints
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -71,7 +73,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	if direction != Vector3.ZERO and is_on_floor():
+		if steps_sfx.playing == false:
+			steps_sfx.pitch_scale = randf_range(0.9, 1.1)
+			steps_sfx.playing = true
+		
 	move_and_slide()
 
 

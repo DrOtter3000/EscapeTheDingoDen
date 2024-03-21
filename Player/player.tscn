@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cley0ul24idnj"]
+[gd_scene load_steps=12 format=3 uid="uid://cley0ul24idnj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_nqqyq"]
 [ext_resource type="Script" path="res://Player/Crosshair.gd" id="2_lblxf"]
 [ext_resource type="PackedScene" uid="uid://dbntjyelw6rk3" path="res://Weapons/sparks.tscn" id="2_w1884"]
+[ext_resource type="AudioStream" uid="uid://cjx1ctt18k332" path="res://Player/SFX/walkSandyGround.wav" id="3_267fd"]
 [ext_resource type="PackedScene" uid="uid://bom0b2lbhtk0y" path="res://Weapons/pistol.tscn" id="3_xay52"]
 [ext_resource type="Script" path="res://Player/HUD.gd" id="7_2fvsd"]
 [ext_resource type="Texture2D" uid="uid://d15q57i5a5cjn" path="res://HUD/HealthbarFill.png" id="7_oujet"]
@@ -25,6 +26,9 @@ _data = {
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_nqqyq")
 sparks = ExtResource("2_w1884")
+
+[node name="StepsSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_267fd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_voo7q")
