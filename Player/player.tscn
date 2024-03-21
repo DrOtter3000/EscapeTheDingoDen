@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cley0ul24idnj"]
+[gd_scene load_steps=13 format=3 uid="uid://cley0ul24idnj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_nqqyq"]
 [ext_resource type="Script" path="res://Player/Crosshair.gd" id="2_lblxf"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dbntjyelw6rk3" path="res://Weapons/sparks.tscn" id="2_w1884"]
 [ext_resource type="PackedScene" uid="uid://dgcw3orkl4jft" path="res://Weapons/muzzle_flash.tscn" id="4_1vdlq"]
 [ext_resource type="Script" path="res://Weapons/Pistol.gd" id="4_ub3rh"]
+[ext_resource type="Script" path="res://Player/HUD.gd" id="7_2fvsd"]
+[ext_resource type="Texture2D" uid="uid://d15q57i5a5cjn" path="res://HUD/HealthbarFill.png" id="7_oujet"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_voo7q"]
 
@@ -115,7 +117,7 @@ script = ExtResource("2_lblxf")
 wait_time = 0.3
 one_shot = true
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." groups=["HUD"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +125,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("7_2fvsd")
 
 [node name="AmmoLabel" type="Label" parent="HUD"]
 layout_mode = 1
@@ -136,6 +139,16 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "999"
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 500.0
+grow_vertical = 0
+texture_progress = ExtResource("7_oujet")
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 

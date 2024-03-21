@@ -12,6 +12,7 @@ var player
 @export var attack_range := 2.0
 @export var damage := 5
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 @export var max_hitpoints := 100
@@ -19,7 +20,6 @@ var player
 var hitpoints := max_hitpoints:
 	set(value):
 		hitpoints = value
-		print(hitpoints)
 		if hitpoints <= 0:
 			queue_free()
 
@@ -42,8 +42,7 @@ func _physics_process(delta: float) -> void:
 		provoked = true
 	
 	if distance < attack_range:
-		#animation_player.play("attack")
-		pass
+		animation_player.play("attack")
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -70,6 +69,7 @@ func look_at_target(direction: Vector3):
 
 func hurt_player() -> void:
 	player.hitpoints -= damage
+	get_tree().call_group("HUD", "update_hitpoints")
 
 
 func take_damage(value) -> void:

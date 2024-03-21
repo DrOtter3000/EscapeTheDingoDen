@@ -13,10 +13,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var animation_player: AnimationPlayer = $CameraPivot/Camera3D/AnimationPlayer
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var ammo_label: Label = $HUD/AmmoLabel
+@onready var health_bar: TextureProgressBar = $HUD/HealthBar
 
 @export var sparks: PackedScene
 @export var max_hitpoints : int = 100
-@export var damage := 10
+@export var damage := 50
 
 var weapon_ready := true
 var mouse_motion := Vector2.ZERO
@@ -24,14 +25,16 @@ var fall_multiplier := 2.0
 var hitpoints := max_hitpoints:
 	set(value):
 		hitpoints = value
-		print(hitpoints)
+		if hitpoints > max_hitpoints:
+			hitpoints = max_hitpoints
 
 
 func _ready() -> void:
+	health_bar.max_value = max_hitpoints
+	health_bar.value = hitpoints
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	flashlight.light_energy = 0
 	update_ammo_label()
-	
 
 
 func _process(delta: float) -> void:
