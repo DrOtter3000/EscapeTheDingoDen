@@ -89,6 +89,7 @@ func turn_player() -> void:
 
 func shoot(body) -> void:
 	if weapon_ready and Gamestate.ammo["pistol_rounds"] > 0:
+		get_tree().call_group("Weapons", "fire")
 		Gamestate.ammo["pistol_rounds"] -= 1
 		update_ammo_label()
 		weapon_ready = false
