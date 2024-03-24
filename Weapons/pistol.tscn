@@ -5,6 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://dgcw3orkl4jft" path="res://Weapons/muzzle_flash.tscn" id="2_8ijpx"]
 [ext_resource type="AudioStream" uid="uid://msg75mat4rev" path="res://Weapons/PistolShoot.wav" id="4_wumox"]
 
+[sub_resource type="Animation" id="Animation_tn4js"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_7em6h"]
 resource_name = "fire"
 length = 0.2
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.723858), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_tn4js"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pistol:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3nr2"]

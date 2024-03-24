@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Escape The Dingo Den"
-run/main_scene="res://Levels/basic_level.tscn"
+run/main_scene="res://Levels/tutorial_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

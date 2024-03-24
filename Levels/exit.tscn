@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bda0708ov02yv"]
+
+[ext_resource type="Script" path="res://Levels/Exit.gd" id="1_xxu5m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4enp7"]
+size = Vector3(1.5, 2.3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjsu5"]
+size = Vector3(1.5, 2.3, 0.5)
+
+[node name="Exit" type="Node3D"]
+script = ExtResource("1_xxu5m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("BoxMesh_4enp7")
+
+[node name="ExitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+shape = SubResource("BoxShape3D_cjsu5")
+
+[connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
