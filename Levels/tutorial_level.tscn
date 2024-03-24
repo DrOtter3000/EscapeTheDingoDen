@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnsg5ha0l8buy"]
+[gd_scene load_steps=5 format=3 uid="uid://cnsg5ha0l8buy"]
 
 [ext_resource type="PackedScene" uid="uid://cxnhpjpe4wjct" path="res://Levels/basic_level.tscn" id="1_rru1h"]
 [ext_resource type="Material" uid="uid://jq78xr45dva2" path="res://Materials/DungeonBG.tres" id="2_fkxb1"]
 [ext_resource type="PackedScene" uid="uid://bda0708ov02yv" path="res://Levels/exit.tscn" id="3_qm3jr"]
+[ext_resource type="PackedScene" uid="uid://ch2l55fgngkbd" path="res://Levels/level_1.tscn" id="4_31h2i"]
 
 [node name="TutorialLevel" instance=ExtResource("1_rru1h")]
 
@@ -49,4 +50,4 @@ depth = 5.0
 
 [node name="Exit" parent="NavigationRegion3D/Environment" index="2" instance=ExtResource("3_qm3jr")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 48, 4, 11)
-next_level = ExtResource("1_rru1h")
+next_level = ExtResource("4_31h2i")
