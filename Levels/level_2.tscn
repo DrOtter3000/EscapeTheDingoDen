@@ -1,0 +1,217 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0mwj3sa3naaq"]
+
+[ext_resource type="PackedScene" uid="uid://cxnhpjpe4wjct" path="res://Levels/basic_level.tscn" id="1_oh8ts"]
+[ext_resource type="Material" uid="uid://cam1g12feb2r" path="res://Materials/Concrete.tres" id="2_wj6xs"]
+[ext_resource type="PackedScene" uid="uid://bda0708ov02yv" path="res://Levels/exit.tscn" id="3_igjg2"]
+
+[node name="Level2" instance=ExtResource("1_oh8ts")]
+
+[node name="Player" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+material_override = ExtResource("2_wj6xs")
+use_collision = true
+flip_faces = true
+size = Vector3(5, 3.5, 5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/CSGBox3D" index="0"]
+
+[node name="Room" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -17.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.25, -9.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room2" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -17.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance2" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -0.25, -9.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room3" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -17.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance3" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -0.25, -9.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room4" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -17.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance4" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, -0.25, -9.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room5" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="8"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62, 0, -33.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance5" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="9"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62, -0.25, -41.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room6" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="10"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45, 0, -33.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance6" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="11"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45, -0.25, -41.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room7" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="12"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -33.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance7" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="13"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, -0.25, -41.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room8" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="14"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 0, -33.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance8" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="15"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, -0.25, -41.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room9" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -55.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance9" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.25, -47.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room10" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -55.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance10" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -0.25, -47.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room11" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -55.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance11" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -0.25, -47.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room12" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -55.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance12" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, -0.25, -47.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room13" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="24"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62, 0, -71.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance13" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="25"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62, -0.25, -79.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room14" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="26"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45, 0, -71.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance14" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="27"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45, -0.25, -79.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room15" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="28"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -71.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance15" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="29"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, -0.25, -79.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Room16" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="30"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 0, -71.5)
+flip_faces = true
+size = Vector3(16, 3.5, 15)
+
+[node name="Entrance16" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="31"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, -0.25, -79.5)
+flip_faces = true
+size = Vector3(2, 3, 1)
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.75, 0, -6.5)
+flip_faces = true
+size = Vector3(78.5, 3.5, 5)
+
+[node name="Floor6" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -3.5)
+flip_faces = true
+size = Vector3(3, 3.5, 3)
+
+[node name="Floor7" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5, 0, -85.5)
+flip_faces = true
+size = Vector3(3, 3.5, 3)
+
+[node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.75, 0, -44.5)
+flip_faces = true
+size = Vector3(78.5, 3.5, 5)
+
+[node name="Floor3" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.75, 0, -82.5)
+flip_faces = true
+size = Vector3(78.5, 3.5, 5)
+
+[node name="Floor4" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="37"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -44.5)
+flip_faces = true
+size = Vector3(81, 3.5, 5)
+
+[node name="Floor5" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D/CSGCombiner3D" index="38"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 73.5, 0, -44.5)
+flip_faces = true
+size = Vector3(81, 3.5, 5)
+
+[node name="Exit" parent="NavigationRegion3D/Environment" index="0" instance=ExtResource("3_igjg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5, 0, -87)
