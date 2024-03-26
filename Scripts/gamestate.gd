@@ -5,4 +5,5 @@ var ammo := {
 	"rifle_bullets": 10
 }
 
-var green_card: bool = true
+var green_card: bool = false
+var red_card: bool = true
