@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxnhpjpe4wjct" path="res://Levels/basic_level.tscn" id="1_rru1h"]
 [ext_resource type="Material" uid="uid://jq78xr45dva2" path="res://Materials/DungeonBG.tres" id="2_fkxb1"]
-[ext_resource type="PackedScene" uid="uid://bda0708ov02yv" path="res://Levels/exit.tscn" id="3_qm3jr"]
+[ext_resource type="PackedScene" uid="uid://c5e5w1pfyiuw7" path="res://Levels/exit.tscn" id="3_qm3jr"]
 [ext_resource type="PackedScene" uid="uid://ch2l55fgngkbd" path="res://Levels/level_1.tscn" id="4_31h2i"]
 
 [node name="TutorialLevel" instance=ExtResource("1_rru1h")]

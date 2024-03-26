@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxnhpjpe4wjct" path="res://Levels/basic_level.tscn" id="1_e150s"]
 [ext_resource type="Material" uid="uid://jq78xr45dva2" path="res://Materials/DungeonBG.tres" id="2_uve4i"]
 [ext_resource type="Material" uid="uid://cam1g12feb2r" path="res://Materials/Concrete.tres" id="3_5q5ed"]
-[ext_resource type="PackedScene" uid="uid://bda0708ov02yv" path="res://Levels/exit.tscn" id="4_tp6ux"]
+[ext_resource type="PackedScene" uid="uid://c5e5w1pfyiuw7" path="res://Levels/exit.tscn" id="4_tp6ux"]
 [ext_resource type="PackedScene" uid="uid://b0mwj3sa3naaq" path="res://Levels/level_2.tscn" id="5_mtcc5"]
 
 [node name="Level1" instance=ExtResource("1_e150s")]
@@ -167,5 +167,5 @@ polygon = PackedVector2Array(8, 0, 0, 3.5, 0, 0)
 depth = 2.0
 
 [node name="Exit" parent="NavigationRegion3D/Environment" index="12" instance=ExtResource("4_tp6ux")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6.5, 2.5)
 next_level = ExtResource("5_mtcc5")
