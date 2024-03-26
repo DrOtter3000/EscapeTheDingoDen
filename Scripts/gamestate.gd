@@ -6,4 +6,4 @@ var ammo := {
 }
 
 var green_card: bool = false
-var red_card: bool = true
+var red_card: bool = false
